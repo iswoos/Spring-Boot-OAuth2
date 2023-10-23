@@ -1,1 +1,15 @@
+spring:
+  # 주석을 해도 안해도 상관x, 설사 틀린내용이라도. 우선순위가 docker-compose내용으로 하기 때문
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: ${db.url:jdbc:mysql://localhost:3306/localDB?allowPublicKeyRetrieval=true}
+#    username: ${db.username:root}
+#    password: ${db.password:root}
 
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
