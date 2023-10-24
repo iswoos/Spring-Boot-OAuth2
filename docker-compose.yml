@@ -10,7 +10,7 @@ services:
     environment:
       # MYSQL_DATABASE는 데이터베이스 이름을, MYSQL_ROOT_HOST는 모든 호스트에서 root 계정에 접속 가능하도록 설정합니다.
       # MYSQL_ROOT_PASSWORD는 root 계정의 비밀번호를 설정하고, TZ는 타임존을 설정합니다.
-      MYSQL_DATABASE: localDB
+      MYSQL_DATABASE: docker
       MYSQL_ROOT_HOST: '%'
       MYSQL_ROOT_PASSWORD: root
       TZ: Asia/Seoul
