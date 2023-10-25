@@ -27,12 +27,27 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
     annotationProcessor 'org.projectlombok:lombok'
     runtimeOnly 'com.mysql:mysql-connector-j' // implementation 'mysql:mysql-connector-java' 왜 이거는 인식을 못하게 되는걸까???
+//  Log4j2란?
+//  log4j(Log for Java)란 이전 버전인 Log4j 1.x에 비해 크게 개선된 Log4j로의 업그레이드이며 Logback 아키텍처의 몇 가지 고유한 문제를 수정하면서
+//  Logback에서 사용할 수 있는 많은 개선 사항을 제공하는 대표적인 자바 로깅 프레임워크
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
-
 }
+
+// Log4j2를 사용하기 위해선?
+// 자바 스프링 부트의 Default 자바 로깅 프레임워크는 logback이다.
+// 아래와 같이 'org.springframework.boot:spring-boot-starter-web'에는 logback이 기본적으로 구현되어있다.
+// dependencies {implementation 'org.springframework.boot:spring-boot-starter-web'}
+// 그러니 아래와 같이 기존 자바 로깅 프레임워크인 logback의 종속성을 제거해주어야한다.
+// 결론 -> spring boot에서 log4j2를 사용하기 위해서는 dependency에서 logback을 제거해주는 작업이 필요함.
+configurations {
+    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+}
+// 그 다음, /src/main/resources 경로에 log4j2.xml 파일을 만들어 기본적인 설정을 해준다.
+
 
 tasks.named('test') {
     useJUnitPlatform()
